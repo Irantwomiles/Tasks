@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { HashRouter as Router, Route } from 'react-router-dom'
 
-import Home from "./App"
-import About from "./pages/about"
+import App from "./App"
+import Add from "./pages/add"
 
 ReactDOM.render(
     <Router>
         <div>
             <main>
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
+                <Route exact path="/" component={App} />
+                <Route path="/add" component={Add} />
             </main>
         </div>
     </Router>, 
