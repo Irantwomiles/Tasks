@@ -19,16 +19,17 @@ function Add() {
     const handleAdd = () => {
         let response = ipcRenderer.sendSync("addTask", {name: name, date: startDate});
     
-        new Notification({
-            title: "New Notification",
-            body: "This is a new notification from the Task App."
-        }).show();
+        // new Notification({
+        //     title: "New Notification",
+        //     body: "This is a new notification from the Task App."
+        // }).show();
 
         if(response === null) {
             console.log("error while adding a new task");
             return;
         }
 
+        history.push('/');
     }
 
     const handleCancel = () => {

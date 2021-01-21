@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const electron = window.require('electron');
 const ipcRenderer = electron.ipcRenderer;
@@ -9,6 +9,8 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  let history = useHistory();
 
   const getData = () => {
 
@@ -33,16 +35,7 @@ function App() {
 
   const handleStatus = (task) => {
     updateTaskStatus(task);
-  }
-
-  const renderStatusButton = (task) => {
-
-    if(task === null || typeof task === 'undefined') return <button>NULL</button>;
-
-    if(task.completed) return <button className="done" onClick={() => {handleStatus(task)}}>DONE</button>; 
-
-    return <button className="unfinished" onClick={() => {handleStatus(task)}}>UNFINISHED</button>;
-
+    console.log("clicked", task);
   }
 
   useEffect(() => {
@@ -55,24 +48,23 @@ function App() {
     <div className="App">
 
       <div>
-        <Link to="/add">Add</Link>
-      </div>
-
-      <div>
-        <button>View All</button>
+        <button className="new-button" onClick={() => {history.push('/add')}}>NEW</button>
       </div>
 
       {
+
+        tasks.length === 0 ?
+
+        <p id="no-tasks">THERE ARE NO TASKS TODAY.</p>
+        :
+        
         tasks.map((task) => (
-          <div key={task._id} className="task-wrapper">
+          <div key={task._id} className={task.completed ? "task-wrapper task-wrapper-radius-finished" : "task-wrapper task-wrapper-radius-unfinished"} onClick={() => {handleStatus(task)}}>
             <div className="task-name">
               <p>{task.name.toUpperCase()}</p>
             </div>
             <div className="task-date">
               <p>{task.date}</p>
-            </div>
-            <div className="task-status">
-              { renderStatusButton(task) }
             </div>
           </div>
         ))

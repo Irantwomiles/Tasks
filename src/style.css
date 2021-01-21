@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+* {
+    font-family: 'Oxygen', sans-serif;
+}
+
 /* add.js */
 
 html {
@@ -94,34 +100,68 @@ body {
 .task-wrapper {
     display: flex;
     flex-direction: row;
-    border: 2px solid rgba(255, 52, 52, 0.671);
     border-radius: 5px;
     margin-bottom: 5px;
     margin-top: 5px;
     background-color: rgb(56,60,63);
     color: white;
-    font-size: 20px;
+    font-size: 19px;
+}
+
+.task-wrapper-radius-unfinished {
+    border: 2px solid rgba(104, 103, 103, 0.671);
+}
+
+.task-wrapper-radius-finished {
+    border: 2px solid rgba(77, 255, 151, 0.671);
+    text-decoration: line-through;
+}
+.task-wrapper:hover {
+    cursor: pointer;
 }
 
 .task-name {
     margin-left: 10px;
     margin-right: 10px;
-    width: 50%;
+    width: 80%;
 }
 
 .task-date {
     margin-left: 10px;
-    margin-right: 10px;
-    width: 15%;
+    margin-right: 20px;
+    width: 20%;
 }
 
-.task-status {
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 15%;
+.new-button {
+    position:absolute;
+    width: 150px;
+    height:50px;
+    background-color: rgba(74, 130, 252, 0.671);
+    border: none;
+    color: white;
+    font-size: 20px;
+    bottom:0px;
+    text-align: center;
+    right:30%;
+    left:30%;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: background-color 200ms ease-in;
 }
 
-.task-status button {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.new-button:hover {
+    cursor: pointer;
+    background-color: rgba(35, 104, 255, 0.671);
+}
+
+.new-button:focus {
+    outline: none;
+}
+
+#no-tasks {
+    font-size: 20px;
+    text-align: center;
+    color: rgba(206, 206, 206, 0.671);
+    font-weight: bold;
+    margin-top: 100px;
 }

@@ -15,7 +15,8 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         },
-        show: true
+        show: true,
+        resizable: false
     });
      
 
