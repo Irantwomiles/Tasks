@@ -78,7 +78,6 @@ ipcMain.on('getTasks', (event, data) => {
 
 })
 
-
 ipcMain.on('updateTask', (event, task) => {
 
     db.tasks.update( {_id: task._id}, { $set: {completed: !task.completed} }, (error, numReplaced) => {
