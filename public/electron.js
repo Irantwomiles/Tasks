@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, Menu } = require('electron')
 const path = require("path");
 const isDev = require("electron-is-dev");
 const { getStorage } = require('./storage');
@@ -18,8 +18,9 @@ function createWindow() {
         show: true,
         resizable: false
     });
-     
-
+    
+    Menu.setApplicationMenu(null);
+    
     mainWindow.loadURL(
         isDev
         ? "http://localhost:3000"
